@@ -7,7 +7,7 @@
     <div class="container">
         <div class="form-div">
             <form action="" method="POST">
-                <label for="username">Username</label><br>
+                <label for="username">Email</label><br>
                 <input type="email" name="email" v-model="email" id="email"><br>
                 <label for="password">Password</label><br>
                 <input type="password" name="password" v-model="password" id="password"><br>
