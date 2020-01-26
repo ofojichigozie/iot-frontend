@@ -104,7 +104,7 @@
 
         data(){
             return {
-                username: 'Username',
+                username: 'user@gmail.com',
                 nfc_uuid: '',
                 oneLivestockData: [],
                 allLivestockData: [],
@@ -224,7 +224,7 @@
         line-height: 0.2em;
 
         width: 100%;
-        height: 280px;
+        height: 350px;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 25.62%, rgba(0, 0, 0, 0.75) 100%), url('~@/assets/img/back01.jpg');
         background-repeat: no-repeat;
         background-position: center;

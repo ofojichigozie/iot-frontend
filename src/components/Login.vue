@@ -6,12 +6,12 @@
 
     <div class="container">
         <div class="form-div">
-            <form action="" method="POST">
+            <form @submit="login">
                 <label for="username">Email</label><br>
                 <input type="email" name="email" v-model="email" id="email"><br>
                 <label for="password">Password</label><br>
                 <input type="password" name="password" v-model="password" id="password"><br>
-                <input type="button" v-on:click.prevent="login()" class="login-btn" value="LOGIN">
+                <input type="submit" class="login-btn" value="LOGIN">
             </form>
         </div>
     </div> <div class="container" style="color: white; padding: 15px;">{{ authUser }}</div>
@@ -33,12 +33,27 @@
         },
 
         methods: {
-            login: function(){
+            login: function(e){
+                e.preventDefault();
+
                 if((this.email.trim().length > 0) && (this.password.trim().length > 0)){
-                    axios.post('https://remotelivestockmonitor.000webhostapp.com/api/remote_livestock_monitoring/user_login', {
-                            email: this.email,
-                            password: this.password
-                        })
+
+                    let data = {
+                        email: this.email,
+                        password: this.password
+                    };
+
+                    let configHeaders = {
+                        headers: {
+                            'content-type':'application/json',
+                            'Cache-Control' : 'no-cache'
+                        }
+                    };
+
+                    axios.post('https://remotelivestockmonitor.000webhostapp.com/api/remote_livestock_monitoring/user_login', 
+                        data,
+                        configHeaders
+                        )
                         .then(response => {
                             this.authUser = response.data.data;
                             if(response.data.status == "AUTH_SUCCEED"){
@@ -48,7 +63,7 @@
                             }
                         })
                         .catch(e => {
-                            alert(e)
+                            alert(e);
                         })
                 }else{
                     alert('Please, enter the login details...');
@@ -119,7 +134,7 @@
 
     @media screen and (max-width: 450px){
         .form-div{
-            width: 80% !important;
+            width: 90% !important;
         }
     }
 </style>

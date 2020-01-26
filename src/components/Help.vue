@@ -5,7 +5,7 @@
                 <div class="top-inner">
                     <span style="color: #000000; font-style: italic;">{{ username }}</span>
                     <router-link to="/home"><button class="back-btn">Back</button></router-link>
-                    <button class="logout-btn">Logout</button>
+                    <button class="logout-btn" v-on:click="logout()">Logout</button>
                 </div>
             </div>
         </div>
@@ -72,7 +72,9 @@
         },
 
         methods: {
-
+            logout: function(){
+                window.location.href = '/';
+            }
         }
     }
 </script>
@@ -178,6 +180,10 @@
     @media screen and (max-width: 450px){
         .heading{
             width: 40%;
+        }
+
+        table{
+            font-size: 0.8em;
         }
     }
 
