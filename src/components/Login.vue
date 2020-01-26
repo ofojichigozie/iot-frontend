@@ -43,17 +43,18 @@
                         password: this.password
                     };
 
-                    let configHeaders = {
+                    const configHeaders = {
                         headers: {
                             'content-type':'application/json',
                             'Cache-Control' : 'no-cache'
                         }
                     };
 
-                    axios.post('https://remotelivestockmonitor.000webhostapp.com/api/remote_livestock_monitoring/user_login', 
-                        data,
-                        configHeaders
-                        )
+                    axios.get('https://remotelivestockmonitor.000webhostapp.com/api/user_login/' + this.email + "/" + this.password, {
+                            headers: {
+                                //No headers
+                            }
+                        })
                         .then(response => {
                             this.authUser = response.data.data;
                             if(response.data.status == "AUTH_SUCCEED"){

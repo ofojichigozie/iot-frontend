@@ -119,7 +119,7 @@
                 this.retrievedOneData = null;
 
                 if(this.nfc_uuid.trim().length > 0){
-                    axios.get('https://remotelivestockmonitor.000webhostapp.com/api/remote_livestock_monitoring/livestock_data/' + this.nfc_uuid, {
+                    axios.get('https://remotelivestockmonitor.000webhostapp.com/api/livestock_data/' + this.nfc_uuid, {
                             headers: {
                                 //No headers
                             }
@@ -144,7 +144,7 @@
                 //Reset this variable to null
                 this.retrievedOneData = null;
 
-                axios.get('https://remotelivestockmonitor.000webhostapp.com/api/remote_livestock_monitoring/livestock_data', {
+                axios.get('https://remotelivestockmonitor.000webhostapp.com/api/livestock_data', {
                         headers: {
                             //No headers
                         }
