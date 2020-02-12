@@ -59,7 +59,7 @@
                             this.authUser = response.data.data;
                             if(response.data.status == "AUTH_SUCCEED"){
                                 try{
-                                    localStorage.setItem("iot-user", "ahiarawilson@gmail.com");
+                                    localStorage.setItem("iot-user", "a_wilson@gmail.com");
                                 }catch(e){
                                     console.log("Error seting on local storage");
                                 }
