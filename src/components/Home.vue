@@ -3,7 +3,7 @@
         <div class="top">
             <div class="container">
                 <div class="top-inner">
-                    <span style="color: #000000; font-style: italic;">{{ username }}</span>
+                    <span style="color: #000000; font-style: italic;">{{ email }}</span>
                     <router-link to="/help"><button class="help-btn">Help</button></router-link>
                     <button class="logout-btn" v-on:click="logout()">Logout</button>
                 </div>
@@ -104,12 +104,26 @@
 
         data(){
             return {
-                username: 'user@gmail.com',
+                email: 'user@gmail.com',
                 nfc_uuid: '',
                 oneLivestockData: [],
                 allLivestockData: [],
                 counter: 1,
                 retrievedOneData: null
+            }
+        },
+
+        mounted(){
+            try{
+                let loggedInUser = localStorage.getItem("iot-user");
+
+                if(loggedInUser != null){
+                    this.email = loggedInUser;
+                }else{
+                    window.location.href = '/';
+                }
+            }catch(e){
+                console.log("Error getting from local storage");
             }
         },
 
@@ -163,6 +177,12 @@
             },
 
             logout: function(){
+                try{
+                    localStorage.removeItem("iot-user");
+                }catch(e){
+                    console.log("Error removing from local storage");
+                }
+                
                 window.location.href = '/';
             }
         }

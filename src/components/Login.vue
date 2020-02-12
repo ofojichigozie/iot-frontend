@@ -58,6 +58,12 @@
                         .then(response => {
                             this.authUser = response.data.data;
                             if(response.data.status == "AUTH_SUCCEED"){
+                                try{
+                                    localStorage.setItem("iot-user", "ahiarawilson@gmail.com");
+                                }catch(e){
+                                    console.log("Error seting on local storage");
+                                }
+
                                 window.location.href = '/home';
                             }else{
                                 alert('Unauthorized access denied');

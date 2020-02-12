@@ -3,7 +3,7 @@
         <div class="top">
             <div class="container">
                 <div class="top-inner">
-                    <span style="color: #000000; font-style: italic;">{{ username }}</span>
+                    <span style="color: #000000; font-style: italic;">{{ email }}</span>
                     <router-link to="/home"><button class="back-btn">Back</button></router-link>
                     <button class="logout-btn" v-on:click="logout()">Logout</button>
                 </div>
@@ -56,7 +56,7 @@
 
         data(){
             return {
-                username: 'Username',
+                email: 'user@gmail.com',
                 cattleStatuses: [
                     {status: 'Temperature', details: 'The normal body temperature of a cattle is the range of 38 - 42 degree celcius. When the temperature is below or above (<38 degree, >42 degree) this range; seek the veterinarian\'s attention.'},
                     {status: 'Humidity', details: 'At stable or seemingly stable condition, the cattle has a humidity range of 1 - 90%. At any percentage above this value indicates severe stress; seek the attention of the veterinarian.'},
@@ -71,8 +71,28 @@
             }
         },
 
+        mounted(){
+            try{
+                let loggedInUser = localStorage.getItem("iot-user");
+
+                if(loggedInUser != null){
+                    this.email = loggedInUser;
+                }else{
+                    window.location.href = '/';
+                }
+            }catch(e){
+                console.log("Error gettimg from local storage");
+            }
+        },
+
         methods: {
             logout: function(){
+                try{
+                    localStorage.removeItem("iot-user");
+                }catch(e){
+                    console.log("Error removing from local storage");
+                }
+
                 window.location.href = '/';
             }
         }
