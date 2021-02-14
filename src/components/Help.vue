@@ -73,7 +73,7 @@
 
         mounted(){
             try{
-                let loggedInUser = localStorage.getItem("iot-user");
+                let loggedInUser = localStorage.getItem("iot-admin");
 
                 if(loggedInUser != null){
                     this.email = loggedInUser;
@@ -147,7 +147,8 @@
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 25.62%, rgba(0, 0, 0, 0.74) 100%), url('~@/assets/img/back01.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        background-size: cover
+        background-size: cover;
+        padding-bottom: 10px
     }
 
     .main-head{

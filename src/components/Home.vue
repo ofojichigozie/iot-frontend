@@ -12,7 +12,7 @@
 
         <div class="landing">
             <h1>REMOTE LIVESTOCK MONITORING SYSTEM</h1>
-            <p>Using NFC cum internet-of-things (IoT)</p>
+            <p style="color: #FFFF00;">Using NFC cum internet-of-things (IoT)</p>
             <button>GET STARTED</button>
         </div>
 
@@ -115,7 +115,7 @@
 
         mounted(){
             try{
-                let loggedInUser = localStorage.getItem("iot-user");
+                let loggedInUser = localStorage.getItem("iot-admin");
 
                 if(loggedInUser != null){
                     this.email = loggedInUser;
@@ -133,7 +133,7 @@
                 this.retrievedOneData = null;
 
                 if(this.nfc_uuid.trim().length > 0){
-                    axios.get('https://remotelivestockmonitor.000webhostapp.com/api/livestock_data/' + this.nfc_uuid, {
+                    axios.get('https://iot-backend.000webhostapp.com/api/livestock_data/' + this.nfc_uuid, {
                             headers: {
                                 //No headers
                             }
@@ -158,7 +158,7 @@
                 //Reset this variable to null
                 this.retrievedOneData = null;
 
-                axios.get('https://remotelivestockmonitor.000webhostapp.com/api/livestock_data', {
+                axios.get('https://iot-backend.000webhostapp.com/api/livestock_data', {
                         headers: {
                             //No headers
                         }

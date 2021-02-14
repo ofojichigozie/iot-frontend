@@ -50,7 +50,7 @@
                         }
                     };
 
-                    axios.get('https://remotelivestockmonitor.000webhostapp.com/api/user_login/' + this.email + "/" + this.password, {
+                    axios.get('https://iot-backend.000webhostapp.com/api/admin_login/' + this.email + "/" + this.password, {
                             headers: {
                                 //No headers
                             }
@@ -59,7 +59,7 @@
                             this.authUser = response.data.data;
                             if(response.data.status == "AUTH_SUCCEED"){
                                 try{
-                                    localStorage.setItem("iot-user", "a_wilson@gmail.com");
+                                    localStorage.setItem("iot-admin", "ahiarawilson@gmail.com");
                                 }catch(e){
                                     console.log("Error seting on local storage");
                                 }
